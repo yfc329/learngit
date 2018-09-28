@@ -1,0 +1,53 @@
+选择文件
+$ git add readme.txt
+
+提交文件+事件内容 
+$ git commit -m "branch test"
+
+查看日志
+$ git log
+$ git log --pretty=oneline
+
+版本回退
+$ git reset --hard HEAD^ 回退上一个
+
+回退指定版本
+$ git reset --hard 1094a
+
+
+克隆库
+$ git clone https://github.com/yfc329/gitskills.git
+
+
+首先，我们创建dev分支，然后切换到dev分支：
+
+$ git checkout -b dev
+Switched to a new branch 'dev'
+git checkout命令加上-b参数表示创建并切换
+
+
+直接切换
+$ git checkout master
+
+合并项目快速模式
+$ git merge dev
+
+git merge命令用于合并指定分支到当前分支。合并后，再查看readme.txt的内容，就可以看到，和dev分支的最新提交是完全一样的。
+
+合并项目普通模式
+$ git merge --no-ff -m "merge with no-ff" dev
+
+查看分支
+$ git branch
+
+删除分支
+$ git branch -d dev
+
+强行删除
+$ git branch -D feature-vulcan
+
+暂存修改
+$ git stash
+
+恢复修改
+$ git stash pop
