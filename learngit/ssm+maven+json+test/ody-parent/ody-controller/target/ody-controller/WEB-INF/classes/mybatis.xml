@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- 导入db.properties文件  移到spring框架中的applicationContext.xml文件
+  <properties resource="db.properties" ></properties>-->
+   
+  <!-- 配置别名 -->
+  <typeAliases>
+		<!--<typeAlias type="com.test.pojo.Userinfo" alias="Userinfo"/> -->
+		 <package name="com.test.pojo"/>
+  </typeAliases>
+
+  <!-- 根据db.properties中的配置信息 链接数据库 --><!-- jdbc事务自动提交：（暂时） 移动到application.xml文件中 
+   
+  <environments default="development">
+		<environment id="development">
+		
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${uname}" />
+				<property name="password" value="${pwd}" />
+			</dataSource>
+		</environment>
+	</environments>
+	-->
+	<!-- 注册mapper的信息 -->
+	<mappers >
+	<!--  
+	   <mapper resource="com/test/mapper/UsersMapper.xml"/>
+	   -->
+	   <mapper resource="com/test/mapper/TestMapper.xml"/>
+	</mappers>
+
+</configuration>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="test.IDao.CourseMapper" >
+  <resultMap id="BaseResultMap" type="test.domain.Course" >
+    <id column="Cid" property="cid" jdbcType="INTEGER" />
+    <result column="Cname" property="cname" jdbcType="VARCHAR" />
+    <result column="Tid" property="tid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Cid, Cname, Tid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from course
+    where Cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from course
+    where Cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="test.domain.Course" >
+    insert into course (Cid, Cname, Tid
+      )
+    values (#{cid,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="test.domain.Course" >
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        Cid,
+      </if>
+      <if test="cname != null" >
+        Cname,
+      </if>
+      <if test="tid != null" >
+        Tid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="cname != null" >
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="test.domain.Course" >
+    update course
+    <set >
+      <if test="cname != null" >
+        Cname = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null" >
+        Tid = #{tid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="test.domain.Course" >
+    update course
+    set Cname = #{cname,jdbcType=VARCHAR},
+      Tid = #{tid,jdbcType=INTEGER}
+    where Cid = #{cid,jdbcType=INTEGER}
+  </update>
+</mapper>
