@@ -1,8 +1,17 @@
 选择文件
 $ git add readme.txt
 
+选择所有文件
+$ git add .
+
 提交文件+事件内容 
 $ git commit -m "branch test"
+
+创建标签
+$ git tag v1.0
+
+上传到服务器
+$ git push origin "内容"
 
 查看日志
 $ git log
